@@ -1,18 +1,20 @@
 
 
-console.log('Starting app');
+console.log('Starting app.js');
 
 const fs = require('fs');
-
-//fetch contents from ms module and store in fs constant
-
 const os = require('os');
+const notes = require('./notes.js')
 
+//fetch contents from module and store in fs constant
 
-var user = os.userInfo();
+//var user = os.userInfo();
+//
+//fs.appendFile('greetings.txt',`Hello ${user.username}! You are ${notes.age}.`, function (err) {
+//    if (err) {
+//        console.log('Unable to write to file');
+//   }
+//});
 
-fs.appendFile('greetings.txt',`Hello ${user.username}!`, function (err) {
-    if (err) {
-        console.log('Unable to write to file');
-   }
-});
+var result = notes.addNote;
+console.log(result);
