@@ -2,14 +2,11 @@ console.log('Starting Notes.js');
 
 
 
-module.exports.addNote =function ()  {
-    console.log('add Note');
-    return 'New Note';
-    
+var addNote = function (title, body){
+   console.log('Adding Note', title, body) ;
 };
 
-module.exports.add = function (a,b){
-   console.log('adding');
-    return a+b; 
+module.exports = {
     
-};
+    addNote:addNote
+};//entire object set to exports, accessing notes from another page will allow us to call these functions
