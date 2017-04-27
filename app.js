@@ -4,7 +4,7 @@ console.log('Starting app.js');
 
 const fs = require('fs');
 const os = require('os');
-const notes = require('./notes.js')
+const notes = require('./notes.js');
 
 //fetch contents from module and store in fs constant
 
@@ -16,5 +16,8 @@ const notes = require('./notes.js')
 //   }
 //});
 
-var result = notes.addNote;
+var result = notes.addNote();
 console.log(result);
+
+var add = notes.add(2,3);
+console.log(add);
