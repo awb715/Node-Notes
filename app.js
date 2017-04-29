@@ -6,8 +6,22 @@ const yargs = require('yargs');
 //user create module
 const notes = require('./notes.js');
 //this connects exports in notes.js to this page.
-const argv = yargs.argv;
+const argv = yargs.command('add','Add new note',{
+  title:{
+      describe: 'Title',
+      demand:true,
+      alias:'t'
+        } ,
+    body:{
+        describe:'Body',
+        demand:true,
+        alias:'b'
+    }
+})
+.help()
+.argv;
 var command = argv._[0];
+
 console.log('Yargs', argv);
 console.log('Command: ', command);
 if (command === 'add') {
