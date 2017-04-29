@@ -1,4 +1,4 @@
-console.log('Starting app.js');
+
 //3rd party module
 const fs = require('fs');
 const _ = require('lodash');
@@ -13,24 +13,24 @@ console.log('Command: ', command);
 if (command === 'add') {
     var note = notes.addNote(argv.title, argv.body);
     if (note) {
-        console.log('Note Created');
-        console.log('--');
-        console.log('Title: ' + note.title);
-        console.log('--');
-        console.log('Body: ' + note.body);
+       notes.logNote(note);
     }
     else {
         console.log('Title taken');
     }
 }
 else if (command === 'list') {
-    notes.getAll();
+   var allNotes = notes.getAll();
+    
+    console.log(`Printing ${allNotes.length} note(s).`);
+    
+    allNotes.forEach((note) => notes.logNote(note));
 }
 else if (command === 'read') {
   var readNote = notes.getNote(argv.title);
-    console.log(readNote);
-  var message = readNote ? `Title ${readNote.title} Body ${readNote.body}` : 'Note doesnt exist';
-    console.log(message);
+    console.log('Note Found');
+  if(readNote){  notes.logNote(readNote)}
+    else{'Note not found'};
 }
 else if (command === 'remove') {
    var noteRemoved= notes.removeNote(argv.title);

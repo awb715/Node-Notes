@@ -1,10 +1,10 @@
-console.log('Starting Notes.js');
+
 const fs = require('fs');
 
 var fetchNotes = () => {
     try {
         var notesString = fs.readFileSync('notes-data.json');
-        return JSON.parse(notesString); //creates json data of notes
+        return JSON.parse(notesString); //creates json data from String info
     }
     catch (e) {
         return [];
@@ -35,6 +35,8 @@ var addNote = (title, body) => {
 }; //addNote
 var getAll = () => {
     console.log('Getting all notes');
+    
+    return fetchNotes();
 };
 var getNote = (title) => {
     console.log('Getting ', title);
@@ -56,9 +58,17 @@ var removeNote = (title) => {
     return notes.length !== keepNotes.length;
     
 }
-module.exports = {
-    addNote: addNote
-    , getAll: getAll
-    , getNote: getNote
-    , removeNote: removeNote
+
+
+var logNote = (note) => {
+    debugger;
+    console.log(`Title: ${note.title} Body: ${note.body} `); 
+};
+
+module.exports = {  //addNote = addNote:addNote();
+    addNote
+    , getAll
+    , getNote
+    , removeNote,
+    logNote
 }; //entire object set to exports, accessing notes from another page will allow us to call these functions
