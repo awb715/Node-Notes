@@ -41,6 +41,17 @@ var getNote = (title) => {
 }
 var removeNote = (title) => {
     console.log('Removing ', title);
+    
+    //fetch notes
+    var notes = fetchNotes();
+    console.log(notes);
+    //filter notes, removing one with title of arg
+    var keepNotes = notes.filter((note) => note.title != title); //interesting learning on how to write code more efficiently
+    console.log(title);
+    console.log(keepNotes);
+    //save new notes
+   saveNotes(keepNotes);
+    
 }
 module.exports = {
     addNote: addNote
