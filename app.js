@@ -27,7 +27,10 @@ else if (command === 'list') {
     notes.getAll();
 }
 else if (command === 'read') {
-    notes.getNote(argv.title);
+  var readNote = notes.getNote(argv.title);
+    console.log(readNote);
+  var message = readNote ? `Title ${readNote.title} Body ${readNote.body}` : 'Note doesnt exist';
+    console.log(message);
 }
 else if (command === 'remove') {
    var noteRemoved= notes.removeNote(argv.title);

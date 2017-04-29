@@ -38,6 +38,9 @@ var getAll = () => {
 };
 var getNote = (title) => {
     console.log('Getting ', title);
+    var notes = fetchNotes();
+    var titleCheck = notes.filter((note) => note.title === title);
+    return titleCheck[0];
 }
 var removeNote = (title) => {
     console.log('Removing ', title);
@@ -47,10 +50,10 @@ var removeNote = (title) => {
     console.log(notes);
     //filter notes, removing one with title of arg
     var keepNotes = notes.filter((note) => note.title != title); //interesting learning on how to write code more efficiently
-    console.log(title);
-    console.log(keepNotes);
     //save new notes
    saveNotes(keepNotes);
+    
+    return notes.length !== keepNotes.length;
     
 }
 module.exports = {
